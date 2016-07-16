@@ -1,5 +1,6 @@
 var React = require('react');
 var ConfirmBattle = require('../components/ConfirmBattle');
+var githubHelpers = require('../utils/githubHelpers');
 
 var ConfirmBattleContainer = React.createClass({
   contextTypes: {
@@ -13,8 +14,15 @@ var ConfirmBattleContainer = React.createClass({
   },
   componentDidMount: function () {
     var query = this.props.location.query;
-    console.log('QUERY', query);
-    // fetch info from github API
+    // keep context of this that same as outter function, remember the context of this changes in JS from function to function
+    var that = this;
+    githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo])
+      .then(function (players) {
+        that.setState({
+          isLoading: false,
+          playersInfo: [players[0], players[1]]
+        })
+      })
   },
   render: function () {
     return (

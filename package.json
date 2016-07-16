@@ -10,6 +10,7 @@
   "author": "Tyler McGinnis <tylermcginnis33@gmail.com> (http://tylermcginnis.com)",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.13.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-router": "^2.4.1"
